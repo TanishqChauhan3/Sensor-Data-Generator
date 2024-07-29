@@ -14,4 +14,6 @@ python sensor_data_generator.py
 The script will continuously generate random data and save it to a file named sensor_data.json.
 Customization:
 You can adjust the temperature and humidity ranges in the data() function.
-Modify the sleep interval (currently set to 5 seconds) if needed.
+Modify the sleep interval (currently set to 5 seconds) if needed. 
+
+The result will be shown on the webpage displaying the temperature and humidity
