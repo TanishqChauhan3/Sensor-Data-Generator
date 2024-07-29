@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(18, 18, 209);
+        }
+        h1 {
+            color:grey;
+            text-align:center;
+            font-size:70px;
+            font-weight:bold;
+            padding:10px;
+        }
+
+        .data {
+            margin-top: 20px;
+        }
+
+        p{
+            font-weight:bold;
+            text-align:center;
+            font-size:50px;
+            padding:20px;
+            color:grey;
+        }
+
+        p:hover{
+            font-size:50px;
+            color:Black;
+        }
+
+        .top{
+            background-color:white;
+            height:100px;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>Current Sensor Data</h1>
+    </div>
+    <div class="data">
+        <p>Temperature: <span id="temperature"></span>°C</p>
+        <p>Humidity: <span id="humidity"></span>%</p>
+    </div>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('/sensor_data.json');
+            const data = await response.json();
+            document.getElementById('temperature').textContent = data.temperature.toFixed(2);
+            document.getElementById('humidity').textContent = data.humidity.toFixed(2);
+        }
+
+        setInterval(fetchData, 5000); 
+        fetchData();
+    </script>
+</body>
+</html>
